@@ -74,8 +74,6 @@ public class Storage {
 
 	public void removeSubscriber(String user, String topic) {
 
-		// TODO: remove the user as subscriber to the topic
-
-		throw new RuntimeException("not yet implemented");
+		subscriptions.get(topic).remove(topic);
 	}
 }

@@ -73,7 +73,8 @@ public class Storage {
 	}
 
 	public void removeSubscriber(String user, String topic) {
-
-		subscriptions.get(topic).remove(topic);
+		
+		subscriptions.get(topic).remove(user);
+		
 	}
 }

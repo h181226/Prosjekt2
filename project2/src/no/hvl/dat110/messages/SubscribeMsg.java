@@ -22,9 +22,4 @@ public class SubscribeMsg extends Message {
 		return super.toString() + "\n" + "SubscribeMsg [topic=" + topic + "]";
 	}
 	
-	
-
-	// TODO: 
-	// Implement objectvariables, constructor, get/set-methods, and toString method
-
 }

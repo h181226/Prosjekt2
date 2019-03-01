@@ -61,18 +61,14 @@ public class Storage {
 	}
 
 	public void deleteTopic(String topic) {
-
-		// TODO: delete topic from the storage
-
-		throw new RuntimeException("not yet implemented");
+		
+		subscriptions.remove(topic);
 		
 	}
 
 	public void addSubscriber(String user, String topic) {
-
-		// TODO: add the user as subscriber to the topic
 		
-		throw new RuntimeException("not yet implemented");
+		subscriptions.get(topic).add(user);
 		
 	}
 

@@ -1,11 +1,18 @@
 package no.hvl.dat110.broker;
 
-import java.util.Set;
 import java.util.Collection;
 
 import no.hvl.dat110.common.Logger;
 import no.hvl.dat110.common.Stopable;
-import no.hvl.dat110.messages.*;
+import no.hvl.dat110.messages.ConnectMsg;
+import no.hvl.dat110.messages.CreateTopicMsg;
+import no.hvl.dat110.messages.DeleteTopicMsg;
+import no.hvl.dat110.messages.DisconnectMsg;
+import no.hvl.dat110.messages.Message;
+import no.hvl.dat110.messages.MessageType;
+import no.hvl.dat110.messages.PublishMsg;
+import no.hvl.dat110.messages.SubscribeMsg;
+import no.hvl.dat110.messages.UnsubscribeMsg;
 import no.hvl.dat110.messagetransport.Connection;
 
 public class Dispatcher extends Stopable {
@@ -142,6 +149,12 @@ public class Dispatcher extends Stopable {
 	public void onPublish(PublishMsg msg) {
 
 		Logger.log("onPublish:" + msg.toString());
+		
+		Collection<ClientSession> subscribers = storage.getSessions();
+		
+		for(ClientSession s : subscribers) {
+			s.send(msg);
+		}
 		
 		
 	}

@@ -124,11 +124,10 @@ public class Dispatcher extends Stopable {
 	public void onSubscribe(SubscribeMsg msg) {
 
 		Logger.log("onSubscribe:" + msg.toString());
-
-		// TODO: subscribe user to the topic
 		
-		throw new RuntimeException("not yet implemented");
+		String topic = msg.getTopic();
 		
+		storage.addSubscriber(msg.getUser(), topic);
 	}
 
 	public void onUnsubscribe(UnsubscribeMsg msg) {

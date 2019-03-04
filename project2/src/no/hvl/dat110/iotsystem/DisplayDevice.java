@@ -11,8 +11,6 @@ public class DisplayDevice {
 		
 		System.out.println("Display starting ...");
 		
-		// TODO - START
-		
 		Client client = new Client("TemperetureDevice", Common.BROKERHOST, Common.BROKERPORT);
 		
 		client.connect();
@@ -26,11 +24,8 @@ public class DisplayDevice {
 			System.out.println("Broker: " + msg.getMessage());
 		}
 		
-		// TODO - END
-		
 		System.out.println("Display stopping ... ");
 		
-		throw new RuntimeException("not yet implemented");
-		
+		client.disconnect();
 	}
 }

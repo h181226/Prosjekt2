@@ -12,10 +12,16 @@ public class TemperatureDevice {
 		
 		Client client = new Client("TemperetureDevice", Common.BROKERHOST, Common.BROKERPORT);
 		
-		client.createTopic(Common.TEMPTOPIC);
+		client.connect();
 		
 		for(int i = 0; i < COUNT; i++) {
 			client.publish(Common.TEMPTOPIC, "The temperature is: " + sn.read());
+			
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+				System.out.println("Feil i TemperatureDevice");
+			}
 		}
 		
 		client.disconnect();
